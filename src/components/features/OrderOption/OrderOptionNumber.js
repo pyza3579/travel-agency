@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './OrderOption.scss';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'; 
 
 const OrderOptionNumber = ({currentValue, limits, setOptionValue}) => (
   < div className={styles.number} >
