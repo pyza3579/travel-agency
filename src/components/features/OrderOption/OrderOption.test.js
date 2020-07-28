@@ -1,6 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import OrderOption from './OrderOption';
+import DatePicker from 'react-datepicker';
 
 describe('Component OrderOption', () => {
   it('should render without crashing', () => {
@@ -131,6 +132,16 @@ describe('Component OrderOption', () => {
         }
         case 'checkboxes': {
           /* tests for checkboxes*/
+          it('contains inputs', () => {
+            const input = renderedSubcomponent.find('input');
+            expect(input.length).toBe(2);
+          });
+  
+          it('should run setOrderOption function on change', () => {
+            renderedSubcomponent.find('[value="xyz"]').simulate('change', {currentTarget: {checked: true}});
+            expect(mockSetOrderOption).toBeCalledTimes(1);
+            expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: [mockProps.currentValue, testValue] });
+          });
           break;
         }
         case 'number': {
@@ -149,12 +160,22 @@ describe('Component OrderOption', () => {
         }
 
         case 'text': {
-          /* tests for text*/
+          /* tests for text*/          
+          it('contains input', () => {
+            const input = renderedSubcomponent.find('input');
+            expect(input.length).toBe(1);
+          });
+  
+          it('should simulate on change event', () => {
+            renderedSubcomponent.find('input').simulate('change');
+          });
           break;
-        
         }
         case 'date': {
           /* tests for date*/
+          it('should simulate on change event', () => {
+            renderedSubcomponent.find((DatePicker)).simulate('change', {currentTarget: {value: testValue}});
+          });
           break;
         }
       }

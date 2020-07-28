@@ -5,7 +5,8 @@ import TripSummary from './TripSummary';
 describe('Component TripSummary', () => {
   it('should generate link to correct adress',() => {
     const id = 'abc';
-    const component = shallow(<TripSummary id= {id}/>);
+    const expectedTags=['title', 'hello', 'text'];
+    const component = shallow(<TripSummary id= {id} tags={expectedTags}/>);
     const correctAdress = component.find('.link').prop('to'); 
     expect(correctAdress).toEqual(`/trip/${id}`);
     
@@ -14,16 +15,18 @@ describe('Component TripSummary', () => {
   it('should check if image has correct src and alt', () => {
     const expectedName = 'Lorem ipsum';
     const expectedSrc = 'image.jpg';
-    const component = shallow(<TripSummary src={expectedSrc} alt={expectedName}/>);
-    expect(component.find('.image').prop('src')).toEqual(expectedSrc);  
-    expect(component.find('.image').prop('alt')).toEqual(expectedName); 
+    const expectedTags=['title', 'hello', 'text'];
+    const component = shallow(<TripSummary image={expectedSrc} name={expectedName} tags={expectedTags}/>);
+    expect(component.find('img').prop('src')).toEqual(expectedSrc);  
+    expect(component.find('img').prop('alt')).toEqual(expectedName); 
   });
 
   it('should check if name, cost and days render correct', () => {
     const expectedName = 'Lorem ipsum';
     const expectedDays = 2;
     const expectedCost = '30';
-    const component = shallow(<TripSummary name={expectedName} days={expectedDays} cost={expectedCost}/>);
+    const expectedTags=['title', 'hello', 'text'];
+    const component = shallow(<TripSummary name={expectedName} days={expectedDays} cost={expectedCost} tags={expectedTags}/>);
 
     expect(component.find('.name')).toEqual(expectedName);
     expect(component.find('.days')).toEqual(expectedDays);
