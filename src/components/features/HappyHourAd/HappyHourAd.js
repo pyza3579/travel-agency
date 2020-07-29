@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './HappyHourAd.scss';
 
 
+
 class HappyHourAd extends React.Component {
 
   constructor(){
@@ -28,9 +29,9 @@ class HappyHourAd extends React.Component {
       time = this.getCountdownTime();
     }
     return (
-      <div>
+      <div className={styles.component}>
         <h3 className={styles.title}>This is HappyHourAd</h3>    
-        <div className='promoDescription'>{time}</div>
+        <div className={styles.promoDescription}>{time}</div>
       </div>
     );
   }
