@@ -1,0 +1,23 @@
+.component {
+    position: relative;
+    text-align: center;
+    color:#fff;
+    ;
+  }
+  
+  .title, .days {
+    position: absolute;
+    width: 100%;
+  }
+  
+  .title, .days {
+    bottom: 310px;
+    font-size: 20px;
+  }
+  
+  .days {
+    position: relative;
+    text-align: center;
+    font-size: medium;
+  }
+
