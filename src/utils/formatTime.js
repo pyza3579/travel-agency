@@ -6,8 +6,6 @@ export const formatTime = (time) => {
     const minutes = Math.floor((time / 60) % 60);
     const hours = Math.floor(time/ 3600);
 
-    return toString(hours).padStart(2, '02') + ':' + toString(minutes).padStart(2,'02') + ':' + toString(seconds).padStart(2,'02');
+    return hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0');
   }
-
-
 };
