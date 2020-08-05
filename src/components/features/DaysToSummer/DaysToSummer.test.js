@@ -49,7 +49,7 @@ const mockDate = customDate => class extends Date {
 
 const checkDescriptionAtTime = (time, expectedDescription) => {
   it(`should show correct at ${time}`, () => {
-    global.Date = mockDate(`${time}T12:00:00Z`);
+    global.Date = mockDate(`${time}T12:00:00.00Z`);
     const component = shallow(<DaysToSummer {...mockProps} />);
     const renderedTime = component.find(select.days).text();
     expect(renderedTime).toEqual(expectedDescription);   
@@ -58,7 +58,7 @@ const checkDescriptionAtTime = (time, expectedDescription) => {
 };
 
 describe('Component DaysToSummer with mocked Date', () => {
-  checkDescriptionAtTime('2020-06-21', ''); //
+  checkDescriptionAtTime('2020-06-21', '');
   checkDescriptionAtTime('2020-06-20', '1 day to summer!');
-  checkDescriptionAtTime('2020-09-23', '267'); //
+  checkDescriptionAtTime('2020-09-23', '267');
 });
